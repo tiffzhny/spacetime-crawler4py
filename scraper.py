@@ -43,6 +43,27 @@ def is_valid(url):
         parsed = urlparse(url)
         if parsed.scheme not in set(["http", "https"]):
             return False
+        
+        host = parsed.netloc.lower()
+        allowed = (
+            re.search(r"(^|\.)ics\.uci\.edu$", host) or
+            re.search(r"(^|\.)cs\.uci\.edu$", host) or
+            re.search(r"(^|\.)informatics\.uci\.edu$", host) or
+            re.search(r"(^|\.)stat\.uci\.edu$", host)
+        )
+        if not allowed:
+            return False
+
+        if len(parsed.query) > 200:
+            return False
+
+        if re.search(r"(calendar|date|event|action=|tribe-bar-date)", parsed.query.lower()):
+            return False
+
+        path_parts = [p for p in parsed.path.lower().split("/") if p]
+        if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
+            return False
+
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
