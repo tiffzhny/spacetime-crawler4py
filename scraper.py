@@ -118,10 +118,16 @@ def is_valid(url):
         if not allowed:
             return False
 
-        if len(parsed.query) > 200:
+        query = parsed.query.lower()
+
+        if len(query) > 200:
+            return False
+        
+        # Check infinite traps
+        if re.search(r"(replytocom|share|sort|order|filter|page=)", query):
             return False
 
-        if re.search(r"(calendar|date|event|action=|tribe-bar-date)", parsed.query.lower()):
+        if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
             return False
 
         path_parts = [p for p in parsed.path.lower().split("/") if p]
