@@ -43,7 +43,10 @@ def extract_next_links(url, resp):
         return []
 
     content = resp.raw_response.content
-    if not content or len(content) < 100:
+
+    # Top 50 common words needs 50 minimum to look at
+    # Changed < 100 --> < 50 
+    if not content or len(content) < 50:
         return []
 
     soup = BeautifulSoup(content, "lxml")
@@ -64,7 +67,12 @@ def extract_next_links(url, resp):
 
     parsed = urlparse(page_url)
     host = parsed.netloc.lower()
-    if host.endswith(".ics.uci.edu"):
+
+    # Include all 4 domains instead of only .ics.uci.edu
+    if (host.endswith(".ics.uci.edu") or 
+        host.endswith(".cs.uci.edu") or 
+        host.endswith(".informatics.uci.edu") or
+        host.endswith(".stat.uci.edu")):
         subdomains[host].add(page_url)
 
     links = []
