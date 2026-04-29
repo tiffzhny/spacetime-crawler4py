@@ -41,6 +41,11 @@ def extract_next_links(url, resp):
 
     if resp.status != 200 or resp.raw_response is None:
         return []
+    
+    # Checks if a page's content type is text/html, skips pdf, image to improve efficiency
+    content_type = resp.raw_response.headers.get("Content-Type", "").lower()
+    if "text/html" not in content_type:
+        return []
 
     content = resp.raw_response.content
 
