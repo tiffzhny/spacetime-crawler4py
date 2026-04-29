@@ -2,6 +2,7 @@ import re, json
 from urllib.parse import urlparse, urljoin, urldefrag
 from bs4 import BeautifulSoup
 from collections import defaultdict
+import atexit
 
 unique_pages   = set()
 longest_page   = ("", 0)
@@ -33,7 +34,7 @@ STOP_WORDS = {
 def scraper(url, resp):
     links = extract_next_links(url, resp)
     valid = [link for link in links if is_valid(link)]
-    _save_stats()
+    # _save_stats()
     return valid
 
 def extract_next_links(url, resp):
@@ -152,3 +153,5 @@ def is_valid(url):
     except TypeError:
         print("TypeError for ", parsed)
         raise
+
+atexit.register(_save_stats)
