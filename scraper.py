@@ -83,10 +83,13 @@ def extract_next_links(url, resp):
 
     links = []
     for tag in soup.find_all("a", href=True):
-        href = tag["href"].strip()
-        absolute = urljoin(base_url, href)
-        defragged, _ = urldefrag(absolute)
-        links.append(defragged)
+        try:
+            href = tag["href"].strip()
+            absolute = urljoin(base_url, href)
+            defragged, _ = urldefrag(absolute)
+            links.append(defragged)
+        except ValueError:
+            continue
 
     return links
 
