@@ -133,7 +133,7 @@ def is_valid(url):
             return False
         
         # Check infinite traps
-        if re.search(r"(replytocom|share|sort|order|filter|page=)", query):
+        if re.search(r"(skin=|lang=|replytocom|share|sort|order|filter|page=)", query):
             return False
 
         if re.search(r"/events/", parsed.path.lower()):
