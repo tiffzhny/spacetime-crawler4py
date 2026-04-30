@@ -1,303 +1,319 @@
 {
-  "unique_pages": 2345,
+  "unique_pages": 1214,
   "longest_page": {
-    "url": "https://wiki.ics.uci.edu/doku.php/ai",
-    "word_count": 10382
+    "url": "https://ics.uci.edu/~pattis/quotations.html",
+    "word_count": 21731
   },
   "top_50_words": [
     [
       "ics",
-      7046
+      3792
     ],
     [
-      "cc",
-      5385
+      "university",
+      3561
     ],
     [
-      "log",
-      3828
+      "can",
+      3165
     ],
     [
-      "wiki",
-      3578
+      "events",
+      3080
     ],
     [
-      "uci",
-      3479
+      "research",
+      2655
     ],
     [
-      "src",
-      3190
-    ],
-    [
-      "edu",
-      3128
-    ],
-    [
-      "index",
-      2891
-    ],
-    [
-      "support",
-      2722
-    ],
-    [
-      "tools",
-      2467
-    ],
-    [
-      "releases",
-      2256
-    ],
-    [
-      "access",
-      2136
-    ],
-    [
-      "flamingo",
-      1839
-    ],
-    [
-      "please",
-      1811
-    ],
-    [
-      "login",
-      1561
-    ],
-    [
-      "directory",
-      1547
-    ],
-    [
-      "password",
-      1532
-    ],
-    [
-      "username",
-      1519
-    ],
-    [
-      "name",
-      1484
-    ],
-    [
-      "size",
-      1383
-    ],
-    [
-      "last",
-      1369
-    ],
-    [
-      "modified",
-      1334
-    ],
-    [
-      "student",
-      1314
-    ],
-    [
-      "description",
-      1306
-    ],
-    [
-      "parent",
-      1301
-    ],
-    [
-      "apache",
-      1274
-    ],
-    [
-      "uc",
-      1260
-    ],
-    [
-      "server",
-      1243
-    ],
-    [
-      "irvine",
-      1221
-    ],
-    [
-      "ubuntu",
-      1209
-    ],
-    [
-      "cpp",
-      1200
-    ],
-    [
-      "port",
-      1195
-    ],
-    [
-      "information",
-      1172
-    ],
-    [
-      "using",
-      1102
+      "class",
+      2538
     ],
     [
       "data",
-      1069
+      2525
     ],
     [
-      "restricted",
-      1043
+      "students",
+      2483
     ],
     [
-      "user",
-      1021
-    ],
-    [
-      "email",
-      977
-    ],
-    [
-      "make",
-      976
-    ],
-    [
-      "https",
-      956
-    ],
-    [
-      "string",
-      929
-    ],
-    [
-      "page",
-      920
-    ],
-    [
-      "php",
-      907
-    ],
-    [
-      "doku",
-      903
-    ],
-    [
-      "sepia",
-      899
+      "program",
+      2414
     ],
     [
       "computer",
-      893
+      2295
+    ],
+    [
+      "information",
+      2175
+    ],
+    [
+      "one",
+      2166
+    ],
+    [
+      "code",
+      2153
+    ],
+    [
+      "search",
+      2085
+    ],
+    [
+      "irvine",
+      1998
+    ],
+    [
+      "uci",
+      1995
+    ],
+    [
+      "isg",
+      1970
+    ],
+    [
+      "use",
+      1966
+    ],
+    [
+      "file",
+      1826
+    ],
+    [
+      "programming",
+      1776
+    ],
+    [
+      "lab",
+      1773
+    ],
+    [
+      "us",
+      1753
+    ],
+    [
+      "uc",
+      1711
+    ],
+    [
+      "student",
+      1672
+    ],
+    [
+      "using",
+      1627
     ],
     [
       "science",
-      884
+      1607
     ],
     [
-      "recent",
-      865
+      "learning",
+      1576
     ],
     [
-      "need",
-      858
+      "first",
+      1571
     ],
     [
-      "old",
-      857
+      "time",
+      1519
+    ],
+    [
+      "new",
+      1513
+    ],
+    [
+      "nbsp",
+      1513
+    ],
+    [
+      "day",
+      1490
+    ],
+    [
+      "software",
+      1485
+    ],
+    [
+      "course",
+      1482
+    ],
+    [
+      "pdf",
+      1458
+    ],
+    [
+      "project",
+      1417
+    ],
+    [
+      "systems",
+      1413
+    ],
+    [
+      "method",
+      1409
+    ],
+    [
+      "access",
+      1392
+    ],
+    [
+      "ieee",
+      1390
+    ],
+    [
+      "work",
+      1367
+    ],
+    [
+      "faculty",
+      1359
+    ],
+    [
+      "next",
+      1349
+    ],
+    [
+      "java",
+      1339
+    ],
+    [
+      "object",
+      1269
+    ],
+    [
+      "award",
+      1252
+    ],
+    [
+      "conference",
+      1236
+    ],
+    [
+      "news",
+      1216
+    ],
+    [
+      "may",
+      1174
+    ],
+    [
+      "int",
+      1168
     ]
   ],
   "subdomains": [
     [
       "accessibility.ics.uci.edu",
-      2
+      1
     ],
     [
-      "asterix.ics.uci.edu",
-      5
+      "cert.ics.uci.edu",
+      8
     ],
     [
       "chenli.ics.uci.edu",
-      2
-    ],
-    [
-      "cloudberry.ics.uci.edu",
-      5
+      1
     ],
     [
       "cml.ics.uci.edu",
-      1
+      20
     ],
     [
       "code.ics.uci.edu",
+      2
+    ],
+    [
+      "courselisting.ics.uci.edu",
       1
     ],
     [
-      "cs.ics.uci.edu",
-      2
-    ],
-    [
-      "flamingo.ics.uci.edu",
-      1377
-    ],
-    [
-      "fr.ics.uci.edu",
-      2
-    ],
-    [
-      "gradinfo.ics.uci.edu",
-      2
-    ],
-    [
-      "grape.ics.uci.edu",
-      37
-    ],
-    [
-      "hobbes.ics.uci.edu",
-      10
-    ],
-    [
-      "industryshowcase.ics.uci.edu",
-      4
-    ],
-    [
-      "informatics.ics.uci.edu",
+      "ds4all.ics.uci.edu",
       7
     ],
     [
-      "ipubmed.ics.uci.edu",
+      "edgelab.ics.uci.edu",
+      7
+    ],
+    [
+      "grape.ics.uci.edu",
+      40
+    ],
+    [
+      "helpdesk.ics.uci.edu",
+      13
+    ],
+    [
+      "icde2023.ics.uci.edu",
+      45
+    ],
+    [
+      "industryshowcase.ics.uci.edu",
       1
+    ],
+    [
+      "informatics.ics.uci.edu",
+      12
+    ],
+    [
+      "intranet.ics.uci.edu",
+      15
     ],
     [
       "isg.ics.uci.edu",
-      6
+      295
     ],
     [
-      "jgarcia.ics.uci.edu",
-      6
+      "luci.ics.uci.edu",
+      4
     ],
     [
-      "mcs.ics.uci.edu",
-      5
-    ],
-    [
-      "mds.ics.uci.edu",
-      9
-    ],
-    [
-      "mhcid.ics.uci.edu",
-      17
-    ],
-    [
-      "mswe.ics.uci.edu",
-      3
-    ],
-    [
-      "tastier.ics.uci.edu",
+      "malek.ics.uci.edu",
       1
     ],
     [
+      "mswe.ics.uci.edu",
+      1
+    ],
+    [
+      "nalini.ics.uci.edu",
+      1
+    ],
+    [
+      "netreg.ics.uci.edu",
+      1
+    ],
+    [
+      "seal.ics.uci.edu",
+      42
+    ],
+    [
+      "sherlock.ics.uci.edu",
+      7
+    ],
+    [
+      "stairs.ics.uci.edu",
+      3
+    ],
+    [
+      "stat.ics.uci.edu",
+      4
+    ],
+    [
+      "tutoring.ics.uci.edu",
+      5
+    ],
+    [
+      "vision.ics.uci.edu",
+      188
+    ],
+    [
       "wiki.ics.uci.edu",
-      778
+      14
     ]
   ]
 }

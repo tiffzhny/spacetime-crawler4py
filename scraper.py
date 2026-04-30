@@ -136,15 +136,20 @@ def is_valid(url):
         if re.search(r"(replytocom|share|sort|order|filter|page=)", query):
             return False
 
+        if re.search(r"/events/", parsed.path.lower()):
+            return False
+        
         if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
             return False
-
+        if re.search(r"(replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
+            return False
+        
         path_parts = [p for p in parsed.path.lower().split("/") if p]
         if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
             return False
         if "doku.php" in parsed.path.lower() and parsed.query:
             return False
-        
+    
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
