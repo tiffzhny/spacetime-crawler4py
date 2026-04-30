@@ -1,231 +1,235 @@
 {
-  "unique_pages": 1583,
+  "unique_pages": 3411,
   "longest_page": {
-    "url": "https://cml.ics.uci.edu/category/aiml/",
-    "word_count": 24169
+    "url": "https://ics.uci.edu/~ihler/papers/abs.html",
+    "word_count": 16207
   },
   "top_50_words": [
     [
       "support",
-      7274
-    ],
-    [
-      "wiki",
-      4869
-    ],
-    [
-      "tools",
-      4523
+      10139
     ],
     [
       "media",
-      4098
+      8614
+    ],
+    [
+      "wiki",
+      7126
     ],
     [
       "files",
-      3058
+      7060
     ],
     [
-      "page",
-      2807
-    ],
-    [
-      "ics",
-      2673
-    ],
-    [
-      "backups",
-      2643
-    ],
-    [
-      "sitemap",
-      2573
-    ],
-    [
-      "manager",
-      2418
-    ],
-    [
-      "security",
-      2298
-    ],
-    [
-      "services",
-      2272
-    ],
-    [
-      "virtual",
-      2217
-    ],
-    [
-      "environments",
-      2186
-    ],
-    [
-      "png",
-      1993
-    ],
-    [
-      "pasted",
-      1942
-    ],
-    [
-      "group",
-      1927
-    ],
-    [
-      "software",
-      1919
-    ],
-    [
-      "revisions",
-      1895
-    ],
-    [
-      "webapps",
-      1884
-    ],
-    [
-      "user",
-      1873
+      "tools",
+      7035
     ],
     [
       "search",
-      1790
+      5410
     ],
     [
-      "hardware",
-      1761
-    ],
-    [
-      "instructional",
-      1738
-    ],
-    [
-      "show",
-      1714
-    ],
-    [
-      "accounts",
-      1682
-    ],
-    [
-      "log",
-      1643
-    ],
-    [
-      "recent",
-      1592
-    ],
-    [
-      "old",
-      1588
-    ],
-    [
-      "changes",
-      1548
-    ],
-    [
-      "site",
-      1547
+      "page",
+      4826
     ],
     [
       "commands",
-      1540
+      4644
     ],
     [
-      "backlinks",
-      1529
+      "manager",
+      4389
     ],
     [
       "upload",
-      1526
+      3797
     ],
     [
-      "kb",
-      1446
+      "instructional",
+      3748
     ],
     [
-      "requesttracker",
-      1434
+      "services",
+      3568
     ],
     [
-      "namespaces",
-      1420
+      "virtual",
+      3429
+    ],
+    [
+      "security",
+      3404
+    ],
+    [
+      "environments",
+      3398
+    ],
+    [
+      "pasted",
+      3370
+    ],
+    [
+      "dechter",
+      3271
     ],
     [
       "file",
-      1346
+      3232
     ],
     [
-      "windows",
-      1319
+      "show",
+      3230
+    ],
+    [
+      "software",
+      3228
+    ],
+    [
+      "revisions",
+      3097
+    ],
+    [
+      "kb",
+      3041
     ],
     [
       "history",
-      1266
+      3025
+    ],
+    [
+      "group",
+      2992
+    ],
+    [
+      "hardware",
+      2976
+    ],
+    [
+      "png",
+      2955
     ],
     [
       "projects",
-      1215
+      2952
     ],
     [
-      "linux",
-      1214
+      "accounts",
+      2903
     ],
     [
-      "research",
-      1194
+      "windows",
+      2794
+    ],
+    [
+      "uci",
+      2778
+    ],
+    [
+      "webapps",
+      2764
     ],
     [
       "labs",
-      1146
+      2762
     ],
     [
-      "icsdc",
-      1080
+      "linux",
+      2716
     ],
     [
-      "notice",
-      1071
+      "sitemap",
+      2660
     ],
     [
       "date",
-      1059
+      2639
     ],
     [
-      "learning",
-      1050
+      "name",
+      2550
     ],
     [
-      "downtime",
-      1017
+      "user",
+      2536
     ],
     [
-      "root",
-      1008
+      "view",
+      2483
+    ],
+    [
+      "recent",
+      2451
+    ],
+    [
+      "dataset",
+      2447
+    ],
+    [
+      "backups",
+      2418
+    ],
+    [
+      "jpg",
+      2397
+    ],
+    [
+      "requesttracker",
+      2375
+    ],
+    [
+      "changes",
+      2371
+    ],
+    [
+      "log",
+      2361
+    ],
+    [
+      "old",
+      2325
+    ],
+    [
+      "site",
+      2321
+    ],
+    [
+      "git",
+      2296
+    ],
+    [
+      "backlinks",
+      2293
+    ],
+    [
+      "namespaces",
+      2281
     ]
   ],
   "subdomains": [
     [
+      "archive-beta.ics.uci.edu",
+      9
+    ],
+    [
+      "archive.ics.uci.edu",
+      212
+    ],
+    [
       "cml.ics.uci.edu",
-      53
+      5
     ],
     [
-      "signage.ics.uci.edu",
-      2
-    ],
-    [
-      "stat.ics.uci.edu",
+      "courselisting.ics.uci.edu",
       1
     ],
     [
-      "vision.ics.uci.edu",
-      12
+      "mover.ics.uci.edu",
+      23
     ],
     [
       "wiki.ics.uci.edu",
-      1507
+      2290
     ]
   ]
 }
