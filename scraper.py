@@ -158,6 +158,8 @@ def is_valid(url):
             return False
         if re.search(r"(login|noauth|ticket)", parsed.path.lower()):
             return False
+        if re.search(r"/page/\d+", parsed.path.lower()):
+            return False
         path_parts = [p for p in parsed.path.lower().split("/") if p]
         if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
             return False
