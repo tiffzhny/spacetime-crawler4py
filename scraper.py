@@ -58,6 +58,15 @@ def extract_next_links(url, resp):
     soup = BeautifulSoup(content, "lxml")
     base_url = resp.raw_response.url
 
+    final_url = base_url.lower()
+    title_tag = soup.find("title")
+    title_text = title_tag.get_text().lower() if title_tag else ""
+
+    if any(word in final_url for word in ["login", "noauth", "signin", "cas.uci.edu"]):
+        return []
+    if any(word in title_text for word in ["login", "sign in", "access denied", "authentication required"]):
+        return []
+
     page_url, _ = urldefrag(base_url)
     unique_pages.add(page_url)
 
