@@ -64,7 +64,12 @@ def extract_next_links(url, resp):
 
     if any(word in final_url for word in ["login", "noauth", "signin", "cas.uci.edu"]):
         return []
-    if any(word in title_text for word in ["login", "sign in", "access denied", "authentication required"]):
+    if any(word in title_text for word in ["login", "sign in", "access denied", "authentication required", "forbidden"]):
+        return []
+
+    robots_meta = soup.find("meta", attrs={"name": "robots"})
+    robots_content = robots_meta.get("content", "").lower() if robots_meta else ""
+    if "noindex" in robots_content or "nofollow" in robots_content:
         return []
 
     page_url, _ = urldefrag(base_url)
