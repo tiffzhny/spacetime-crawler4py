@@ -167,7 +167,8 @@ def is_valid(url):
             return False
         if "doku.php" in parsed.path.lower() and parsed.query:
             return False
-    
+        if "/pix/" in parsed.path.lower():
+            return False
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
