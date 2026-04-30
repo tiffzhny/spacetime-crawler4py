@@ -143,7 +143,10 @@ def is_valid(url):
             return False
         if re.search(r"(replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
             return False
-        
+        if re.search(r"(C=|O=|;O=)", parsed.query):
+            return False
+        if re.search(r"/releases/\d", parsed.path.lower()):
+            return False
         path_parts = [p for p in parsed.path.lower().split("/") if p]
         if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
             return False
