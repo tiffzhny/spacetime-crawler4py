@@ -55,7 +55,10 @@ def extract_next_links(url, resp):
     if not content or len(content) < 50:
         return []
 
-    soup = BeautifulSoup(content, "lxml")
+    try:
+        soup = BeautifulSoup(content, "lxml")
+    except Exception:
+        soup = BeautifulSoup(content, "html.parser")
     base_url = resp.raw_response.url
 
     final_url = base_url.lower()
