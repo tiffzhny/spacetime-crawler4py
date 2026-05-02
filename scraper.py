@@ -28,7 +28,10 @@ STOP_WORDS = {
     "we've","were","weren't","what","what's","when","when's","where","where's",
     "which","while","who","who's","whom","why","why's","will","with","won't",
     "would","wouldn't","you","you'd","you'll","you're","you've","your","yours",
-    "yourself","yourselves"
+    "yourself","yourselves", "january", "february", "march", "april", "may", "june", 
+    "july", "august", "september", "october", "november", "december", "jan", "feb", 
+    "mar", "apr", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "monday", "tuesday", 
+    "wednesday", "thursday", "friday", "saturday", "sunday"
 }
 
 def scraper(url, resp):
@@ -38,7 +41,7 @@ def scraper(url, resp):
     return valid
 
 def extract_next_links(url, resp):
-    global longest_page
+    global longest_page, unique_pages, token_freq, subdomains
     links = []
 
     if resp.status != 200 or resp.raw_response is None:
@@ -101,12 +104,16 @@ def extract_next_links(url, resp):
     parsed = urlparse(page_url)
     host = parsed.netloc.lower()
 
-    # Include all 4 domains instead of only .ics.uci.edu
-    if (host.endswith(".ics.uci.edu") or 
-        host.endswith(".cs.uci.edu") or 
-        host.endswith(".informatics.uci.edu") or
-        host.endswith(".stat.uci.edu")):
+    if re.search(r"(^|\.)(ics|cs|informatics|stat)\.uci\.edu$", host):
         subdomains[host].add(page_url)
+
+    
+    # Include all 4 domains instead of only .ics.uci.edu
+    #if (host.endswith(".ics.uci.edu") or 
+    #    host.endswith(".cs.uci.edu") or 
+    #    host.endswith(".informatics.uci.edu") or
+    #    host.endswith(".stat.uci.edu")):
+    #    subdomains[host].add(page_url)
 
     return links
 
@@ -145,6 +152,7 @@ def is_valid(url):
             return False
 
         query = parsed.query.lower()
+        path_lower = parsed.path.lower()
 
         if len(query) > 200:
             return False
@@ -156,6 +164,16 @@ def is_valid(url):
         if re.search(r"/events/", parsed.path.lower()):
             return False
         
+        if re.search(r"(genealogy|family|person|individual|marriage|birth|death)", path_lower):
+            return False
+    
+        months_pattern = r"/(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)(/|-|_|\d|$)"
+        if re.search(months_pattern, path_lower):
+            return False
+        
+        if re.search(r"([?&][cmo]=|;[cmo]=)", parsed.query.lower()):
+            return False
+
         if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
             return False
         if re.search(r"(replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
