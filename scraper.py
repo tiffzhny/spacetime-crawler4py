@@ -28,7 +28,10 @@ STOP_WORDS = {
     "we've","were","weren't","what","what's","when","when's","where","where's",
     "which","while","who","who's","whom","why","why's","will","with","won't",
     "would","wouldn't","you","you'd","you'll","you're","you've","your","yours",
-    "yourself","yourselves", "january", "february", "march", "april", "may", "june", 
+    "yourself","yourselves", 
+    
+    # months and days to avoid crawling calendar pages
+    "january", "february", "march", "april", "may", "june", 
     "july", "august", "september", "october", "november", "december", "jan", "feb", 
     "mar", "apr", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "monday", "tuesday", 
     "wednesday", "thursday", "friday", "saturday", "sunday"
@@ -39,6 +42,10 @@ def scraper(url, resp):
     valid = [link for link in links if is_valid(link)]
     # _save_stats()
     return valid
+
+#---------------------
+# Linked extraction 
+#---------------------
 
 def extract_next_links(url, resp):
     global longest_page, unique_pages, token_freq, subdomains
@@ -63,7 +70,8 @@ def extract_next_links(url, resp):
     except Exception:
         soup = BeautifulSoup(content, "html.parser")
     base_url = resp.raw_response.url
-
+    
+    # --- Collect all href links first ---
     for tag in soup.find_all("a", href=True):
         try:
             href = tag["href"].strip()
@@ -87,6 +95,7 @@ def extract_next_links(url, resp):
     if "noindex" in robots_content or "nofollow" in robots_content:
         return links
 
+    # ----- collect unique pages -----
     page_url, _ = urldefrag(base_url)
     unique_pages.add(page_url)
 
@@ -108,6 +117,10 @@ def extract_next_links(url, resp):
 
 
     return links
+
+# ---------------------------
+# Stats and URL filtering
+# ---------------------------
 
 def _save_stats():
     top_50 = sorted(token_freq.items(), key=lambda x: x[1], reverse=True)[:50]
@@ -159,6 +172,7 @@ def is_valid(url):
         if re.search(r"(genealogy|family|marriage|birth|death)", path_lower):
             return False
     
+        # Block month calendar paths (but NOT "may" as a common word)
         months_pattern = r"/(january|february|march|april|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)(/|-|_|\d|$)"
         if re.search(months_pattern, path_lower):
             return False
@@ -170,7 +184,7 @@ def is_valid(url):
             return False
         if re.search(r"/releases/\d", path_lower):
             return False
-        if re.search(r"(login|noauth|ticket)", path_lower):
+        if re.search(r"(login|noauth|ticket)", path_lower): 
             return False
         if re.search(r"/page/\d+", path_lower):
             return False
