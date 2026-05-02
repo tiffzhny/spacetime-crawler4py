@@ -54,9 +54,8 @@ def extract_next_links(url, resp):
 
     content = resp.raw_response.content
 
-    # Top 50 common words needs 50 minimum to look at
-    # Changed < 100 --> < 50 
-    if not content or len(content) < 50:
+    # len(content) is not # of words. its bytes of a page.
+    if not content or len(content) < 100:
         return links
 
     try:
@@ -92,7 +91,7 @@ def extract_next_links(url, resp):
     unique_pages.add(page_url)
 
     text = soup.get_text(separator=" ")
-    words = [w.lower() for w in re.findall(r"[a-zA-Z]+", text) if len(w) > 1]
+    words = [w.lower() for w in re.findall(r"[a-zA-Z]{2,}", text)]
 
     if len(words) > longest_page[1]:
         longest_page = (page_url, len(words))
@@ -107,13 +106,6 @@ def extract_next_links(url, resp):
     if re.search(r"(^|\.)(ics|cs|informatics|stat)\.uci\.edu$", host):
         subdomains[host].add(page_url)
 
-    
-    # Include all 4 domains instead of only .ics.uci.edu
-    #if (host.endswith(".ics.uci.edu") or 
-    #    host.endswith(".cs.uci.edu") or 
-    #    host.endswith(".informatics.uci.edu") or
-    #    host.endswith(".stat.uci.edu")):
-    #    subdomains[host].add(page_url)
 
     return links
 
@@ -158,10 +150,10 @@ def is_valid(url):
             return False
         
         # Check infinite traps
-        if re.search(r"(skin=|lang=|replytocom|share|sort|order|filter|page=)", query):
+        if re.search(r"(skin=|lang=|replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
             return False
 
-        if re.search(r"/events/", parsed.path.lower()):
+        if re.search(r"/events/", path_lower):
             return False
         
         if re.search(r"(genealogy|family|marriage|birth|death)", path_lower):
@@ -171,27 +163,25 @@ def is_valid(url):
         if re.search(months_pattern, path_lower):
             return False
         
-        if re.search(r"([?&][cmo]=|;[cmo]=)", parsed.query.lower()):
+        if re.search(r"([?&][cmo]=|;[cmo]=)", query):
             return False
 
         if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
             return False
-        if re.search(r"(replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
+        if re.search(r"/releases/\d", path_lower):
             return False
-        if re.search(r"/releases/\d", parsed.path.lower()):
+        if re.search(r"(login|noauth|ticket)", path_lower):
             return False
-        if re.search(r"(login|noauth|ticket)", parsed.path.lower()):
+        if re.search(r"/page/\d+", path_lower):
             return False
-        if re.search(r"/page/\d+", parsed.path.lower()):
-            return False
-        path_parts = [p for p in parsed.path.lower().split("/") if p]
+        path_parts = [p for p in path_lower.split("/") if p]
         if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
             return False
-        if re.search(r"doku\.php/group", parsed.path.lower()):
+        if re.search(r"doku\.php/group", path_lower):
             return False
-        if "doku.php" in parsed.path.lower() and parsed.query:
+        if "doku.php" in path_lower and parsed.query:
             return False
-        if "/pix/" in parsed.path.lower():
+        if "/pix/" in path_lower:
             return False
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
@@ -201,7 +191,7 @@ def is_valid(url):
             + r"|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso"
             + r"|epub|dll|cnf|tgz|sha1"
             + r"|thmx|mso|arff|rtf|jar|csv"
-            + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
+            + r"|rm|smil|wmv|swf|wma|zip|rar|gz)$", path_lower)
 
     except TypeError:
         print("TypeError for ", parsed)
