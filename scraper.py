@@ -79,9 +79,9 @@ def extract_next_links(url, resp):
     title_text = title_tag.get_text().lower() if title_tag else ""
 
     if any(word in final_url for word in ["login", "noauth", "signin", "cas.uci.edu"]):
-        return links
+        return []
     if any(word in title_text for word in ["login", "sign in", "access denied", "authentication required", "forbidden"]):
-        return links
+        return []
 
     robots_meta = soup.find("meta", attrs={"name": "robots"})
     robots_content = robots_meta.get("content", "").lower() if robots_meta else ""
@@ -164,10 +164,10 @@ def is_valid(url):
         if re.search(r"/events/", parsed.path.lower()):
             return False
         
-        if re.search(r"(genealogy|family|person|individual|marriage|birth|death)", path_lower):
+        if re.search(r"(genealogy|family|marriage|birth|death)", path_lower):
             return False
     
-        months_pattern = r"/(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)(/|-|_|\d|$)"
+        months_pattern = r"/(january|february|march|april|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)(/|-|_|\d|$)"
         if re.search(months_pattern, path_lower):
             return False
         
@@ -177,8 +177,6 @@ def is_valid(url):
         if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
             return False
         if re.search(r"(replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
-            return False
-        if re.search(r"(C=|O=|;O=)", parsed.query):
             return False
         if re.search(r"/releases/\d", parsed.path.lower()):
             return False
