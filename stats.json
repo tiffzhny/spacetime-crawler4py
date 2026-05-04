@@ -1,215 +1,239 @@
 {
-  "unique_pages": 4211,
+  "unique_pages": 9421,
   "longest_page": {
-    "url": "https://cml.ics.uci.edu/category/aiml/",
-    "word_count": 24169
+    "url": "https://ics.uci.edu/~eppstein/pubs/all.html",
+    "word_count": 34004
   },
   "top_50_words": [
     [
-      "ramesh",
-      13764
+      "can",
+      23992
     ],
     [
       "ics",
-      10184
-    ],
-    [
-      "jain",
-      8664
-    ],
-    [
-      "research",
-      7211
-    ],
-    [
-      "current",
-      7042
-    ],
-    [
-      "past",
-      6315
-    ],
-    [
-      "information",
-      5824
-    ],
-    [
-      "students",
-      5356
-    ],
-    [
-      "computing",
-      5207
-    ],
-    [
-      "computer",
-      5195
-    ],
-    [
-      "support",
-      4612
-    ],
-    [
-      "read",
-      4582
-    ],
-    [
-      "courses",
-      4468
-    ],
-    [
-      "companies",
-      4384
-    ],
-    [
-      "log",
-      4341
-    ],
-    [
-      "wiki",
-      4288
-    ],
-    [
-      "books",
-      4282
-    ],
-    [
-      "search",
-      4219
-    ],
-    [
-      "theme",
-      4100
-    ],
-    [
-      "favorite",
-      4092
-    ],
-    [
-      "uci",
-      4050
-    ],
-    [
-      "events",
-      3943
-    ],
-    [
-      "experiential",
-      3895
-    ],
-    [
-      "vision",
-      3876
-    ],
-    [
-      "tools",
-      3509
-    ],
-    [
-      "data",
-      3392
-    ],
-    [
-      "access",
-      3314
-    ],
-    [
-      "news",
-      3235
-    ],
-    [
-      "multimedia",
-      3042
-    ],
-    [
-      "edu",
-      2939
-    ],
-    [
-      "personal",
-      2792
-    ],
-    [
-      "back",
-      2789
-    ],
-    [
-      "social",
-      2725
-    ],
-    [
-      "using",
-      2705
-    ],
-    [
-      "people",
-      2693
-    ],
-    [
-      "services",
-      2685
-    ],
-    [
-      "projects",
-      2684
-    ],
-    [
-      "can",
-      2534
-    ],
-    [
-      "researcher",
-      2509
-    ],
-    [
-      "top",
-      2502
-    ],
-    [
-      "navigation",
-      2479
-    ],
-    [
-      "education",
-      2418
-    ],
-    [
-      "blogs",
-      2402
-    ],
-    [
-      "management",
-      2382
+      21429
     ],
     [
       "one",
-      2357
+      17842
     ],
     [
-      "professional",
-      2339
+      "data",
+      15670
     ],
     [
-      "please",
-      2321
-    ],
-    [
-      "entrepreneur",
-      2310
-    ],
-    [
-      "papers",
-      2303
+      "uci",
+      14553
     ],
     [
       "time",
-      2296
+      13578
+    ],
+    [
+      "information",
+      13357
+    ],
+    [
+      "research",
+      13207
+    ],
+    [
+      "computer",
+      13046
+    ],
+    [
+      "software",
+      13000
+    ],
+    [
+      "project",
+      12653
+    ],
+    [
+      "use",
+      11194
+    ],
+    [
+      "course",
+      10940
+    ],
+    [
+      "program",
+      10651
+    ],
+    [
+      "students",
+      10113
+    ],
+    [
+      "using",
+      9985
+    ],
+    [
+      "class",
+      9862
+    ],
+    [
+      "systems",
+      9723
+    ],
+    [
+      "learning",
+      9701
+    ],
+    [
+      "first",
+      9648
+    ],
+    [
+      "work",
+      9543
+    ],
+    [
+      "science",
+      9350
+    ],
+    [
+      "university",
+      9295
+    ],
+    [
+      "new",
+      9204
+    ],
+    [
+      "also",
+      9010
+    ],
+    [
+      "us",
+      8953
+    ],
+    [
+      "code",
+      8814
+    ],
+    [
+      "file",
+      8771
+    ],
+    [
+      "irvine",
+      8763
+    ],
+    [
+      "two",
+      8635
+    ],
+    [
+      "system",
+      7853
+    ],
+    [
+      "number",
+      7417
+    ],
+    [
+      "edu",
+      7380
+    ],
+    [
+      "ll",
+      7211
+    ],
+    [
+      "problem",
+      7208
+    ],
+    [
+      "set",
+      7207
+    ],
+    [
+      "based",
+      6969
+    ],
+    [
+      "eppstein",
+      6886
+    ],
+    [
+      "like",
+      6821
+    ],
+    [
+      "algorithms",
+      6816
+    ],
+    [
+      "re",
+      6723
+    ],
+    [
+      "computing",
+      6685
+    ],
+    [
+      "need",
+      6572
+    ],
+    [
+      "search",
+      6537
+    ],
+    [
+      "see",
+      6523
+    ],
+    [
+      "pdf",
+      6411
+    ],
+    [
+      "list",
+      6395
+    ],
+    [
+      "student",
+      6386
+    ],
+    [
+      "graph",
+      6367
+    ],
+    [
+      "design",
+      6148
     ]
   ],
   "subdomains": [
     [
       "accessibility.ics.uci.edu",
-      2
+      6
+    ],
+    [
+      "acoi.ics.uci.edu",
+      110
+    ],
+    [
+      "archive-beta.ics.uci.edu",
+      7
+    ],
+    [
+      "archive.ics.uci.edu",
+      207
+    ],
+    [
+      "asterix.ics.uci.edu",
+      14
+    ],
+    [
+      "bit.ics.uci.edu",
+      1
+    ],
+    [
+      "cert.ics.uci.edu",
+      30
     ],
     [
       "checkin.ics.uci.edu",
@@ -217,15 +241,23 @@
     ],
     [
       "chenli.ics.uci.edu",
-      2
+      9
+    ],
+    [
+      "cloudberry.ics.uci.edu",
+      4
     ],
     [
       "cml.ics.uci.edu",
-      79
+      150
     ],
     [
       "code.ics.uci.edu",
-      1
+      14
+    ],
+    [
+      "computableplant.ics.uci.edu",
+      88
     ],
     [
       "containers.ics.uci.edu",
@@ -233,114 +265,202 @@
     ],
     [
       "courselisting.ics.uci.edu",
-      1
+      4
+    ],
+    [
+      "cradl.ics.uci.edu",
+      15
+    ],
+    [
+      "create.ics.uci.edu",
+      4
     ],
     [
       "cs.ics.uci.edu",
-      1
+      12
     ],
     [
       "dale-cooper-v0.ics.uci.edu",
-      64
-    ],
-    [
-      "e2.ics.uci.edu",
       1
     ],
     [
+      "dgillen.ics.uci.edu",
+      29
+    ],
+    [
+      "ds4all.ics.uci.edu",
+      9
+    ],
+    [
+      "duttgroup.ics.uci.edu",
+      111
+    ],
+    [
+      "dynamo.ics.uci.edu",
+      31
+    ],
+    [
+      "edgelab.ics.uci.edu",
+      7
+    ],
+    [
+      "emj.ics.uci.edu",
+      33
+    ],
+    [
       "flamingo.ics.uci.edu",
-      442
+      16
     ],
     [
       "fr.ics.uci.edu",
       3
     ],
     [
-      "gitlab.ics.uci.edu",
+      "gradinfo.ics.uci.edu",
       2
     ],
     [
-      "gradinfo.ics.uci.edu",
-      2
+      "grape.ics.uci.edu",
+      304
     ],
     [
       "graphics.ics.uci.edu",
       1
     ],
     [
-      "helpdesk.ics.uci.edu",
-      39
+      "hack.ics.uci.edu",
+      1
     ],
     [
-      "hub.ics.uci.edu",
-      3
-    ],
-    [
-      "informatics.ics.uci.edu",
+      "hobbes.ics.uci.edu",
       10
     ],
     [
+      "hpi.ics.uci.edu",
+      5
+    ],
+    [
+      "i-sensorium.ics.uci.edu",
+      5
+    ],
+    [
+      "icde2023.ics.uci.edu",
+      45
+    ],
+    [
+      "ics.uci.edu",
+      6309
+    ],
+    [
+      "industryshowcase.ics.uci.edu",
+      22
+    ],
+    [
+      "informatics.ics.uci.edu",
+      27
+    ],
+    [
       "intranet.ics.uci.edu",
-      15
+      1
+    ],
+    [
+      "ipubmed.ics.uci.edu",
+      1
     ],
     [
       "isg.ics.uci.edu",
-      6
+      177
     ],
     [
       "isi-buds.ics.uci.edu",
-      1
+      5
     ],
     [
       "jgarcia.ics.uci.edu",
       40
     ],
     [
-      "julia-hub.ics.uci.edu",
-      1
+      "luci.ics.uci.edu",
+      4
+    ],
+    [
+      "mailman.ics.uci.edu",
+      38
     ],
     [
       "malek.ics.uci.edu",
       1
     ],
     [
+      "mcs.ics.uci.edu",
+      11
+    ],
+    [
       "mds.ics.uci.edu",
-      8
+      9
     ],
     [
       "mhcid.ics.uci.edu",
-      11
+      17
+    ],
+    [
+      "mover.ics.uci.edu",
+      23
+    ],
+    [
+      "mswe.ics.uci.edu",
+      8
     ],
     [
       "myip.ics.uci.edu",
       1
     ],
     [
-      "netreg.ics.uci.edu",
-      1
+      "nalini.ics.uci.edu",
+      8
     ],
     [
       "ngs.ics.uci.edu",
-      2026
+      715
+    ],
+    [
+      "oai.ics.uci.edu",
+      6
     ],
     [
       "onboarding.ics.uci.edu",
       1
     ],
     [
+      "riscit.ics.uci.edu",
+      1
+    ],
+    [
+      "sana.ics.uci.edu",
+      4
+    ],
+    [
+      "scale.ics.uci.edu",
+      7
+    ],
+    [
       "seal.ics.uci.edu",
       46
+    ],
+    [
+      "sherlock.ics.uci.edu",
+      7
     ],
     [
       "signage.ics.uci.edu",
       2
     ],
     [
-      "speedtest.ics.uci.edu",
-      1
+      "sparcfire.ics.uci.edu",
+      3
     ],
     [
-      "staging-hub.ics.uci.edu",
+      "speedtest.ics.uci.edu",
       1
     ],
     [
@@ -349,19 +469,47 @@
     ],
     [
       "stat.ics.uci.edu",
-      1
+      10
+    ],
+    [
+      "summeracademy.ics.uci.edu",
+      11
     ],
     [
       "support.ics.uci.edu",
+      2
+    ],
+    [
+      "tastier.ics.uci.edu",
+      1
+    ],
+    [
+      "tutoring.ics.uci.edu",
       5
+    ],
+    [
+      "unite.ics.uci.edu",
+      10
     ],
     [
       "vision.ics.uci.edu",
       220
     ],
     [
+      "wics.ics.uci.edu",
+      221
+    ],
+    [
       "wiki.ics.uci.edu",
-      940
+      110
+    ],
+    [
+      "www-db.ics.uci.edu",
+      23
+    ],
+    [
+      "xtune.ics.uci.edu",
+      6
     ]
   ]
 }
