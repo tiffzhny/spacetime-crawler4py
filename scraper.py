@@ -83,45 +83,46 @@ def extract_next_links(url, resp):
     except Exception:
         soup = BeautifulSoup(content, "html.parser")
 
-    # 6. collect unique pages 
-    unique_pages.add(defragmented_url)
-    
-    # 7. collect all href links first 
-    for tag in soup.find_all("a", href=True):
-        try:
-            href = tag["href"].strip()
-            absolute = urljoin(base_url, href)
-            defragged, _ = urldefrag(absolute)
-            links.append(defragged)
-        except ValueError:
-            continue
-
-    # 8. skip login pages (title check)
+    # 6. skip login pages (title check)
     final_url = base_url.lower()
     title_tag = soup.find("title")
     title_text = title_tag.get_text().lower() if title_tag else ""
 
     if any(word in final_url for word in ["login", "noauth", "signin", "cas.uci.edu"]):
-        return []
+        return links
     if any(word in title_text for word in ["login", "sign in", "access denied", "authentication required", "forbidden"]):
-        return []
-
-    # 9. robots meta handling
-    robots_meta = soup.find("meta", attrs={"name": "robots"})
-    robots_content = robots_meta.get("content", "").lower() if robots_meta else ""
-    if "noindex" in robots_content or "nofollow" in robots_content:
         return links
 
-    # 10. text processing for report
-    text = soup.get_text(separator=" ")
-    words = [w.lower() for w in re.findall(r"[a-zA-Z]{2,}", text)]
+    # 7. robots meta handling
+    robots_meta = soup.find("meta", attrs={"name": "robots"})
+    robots_content = robots_meta.get("content", "").lower() if robots_meta else ""
+    
+    # "nofollow": do NOT follow any hyperlinks on page for further crawling
+    # 8. if "nofollow" is NOT present, collect links to follow
+    if "nofollow" not in robots_content:
+        for tag in soup.find_all("a", href=True):
+            try:
+                href = tag["href"].strip()
+                absolute = urljoin(base_url, href)
+                defragged, _ = urldefrag(absolute)
+                links.append(defragged)
+            except ValueError:
+                continue
 
-    if len(words) > longest_page[1]:
-        longest_page = (defragmented_url, len(words))
+    # "noindex": do NOT show page in search/indexing or reports 
+    # 9. if "noindex" is NOT present, proceed to report
+    if "noindex" not in robots_content:
+        unique_pages.add(defragmented_url)
 
-    for word in words:
-        if word not in STOP_WORDS:
-            token_freq[word] += 1
+        text = soup.get_text(separator=" ")
+        words = [w.lower() for w in re.findall(r"[a-zA-Z]{2,}", text)]
+
+        if len(words) > longest_page[1]:
+            longest_page = (defragmented_url, len(words))
+
+        for word in words:
+            if word not in STOP_WORDS:
+                token_freq[word] += 1
 
     return links
 
