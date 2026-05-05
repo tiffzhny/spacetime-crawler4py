@@ -51,35 +51,42 @@ def extract_next_links(url, resp):
     global longest_page, unique_pages, token_freq, subdomains
     links = []
 
+    # 1. response check
     if resp.status != 200 or resp.raw_response is None:
         return links
     
-    base_url = resp.raw_response.url
-    page_url, _ = urldefrag(base_url)
-    parsed = urlparse(page_url)
-    host = parsed.netloc.lower()
+    base_url = resp.raw_response.url    # final URL of the HTTP response after any redirects
+    defragmented_url, _ = urldefrag(base_url)   # final URL without fragments 
 
+    parsed = urlparse(defragmented_url)         # ParsedResult object (gives .scheme, .netloc, etc.)
+    host = parsed.netloc.lower()        # domain part of URL
+
+    # 2. subdomain tracking 
     if re.search(r"(^|\.)(ics|cs|informatics|stat)\.uci\.edu$", host):
-        subdomains[host].add(page_url)
+        subdomains[host].add(defragmented_url)
     
-    # Checks if a page's content type is text/html, skips pdf, image to improve efficiency
+    # 3. check if a page's content type is text/html. skips pdf, image to improve efficiency
     content_type = resp.raw_response.headers.get("Content-Type", "").lower()
     if "text/html" not in content_type:
         return links
 
     content = resp.raw_response.content
 
+    # 4. check content 
     # len(content) is not # of words. its bytes of a page.
     if not content or len(content) < 100:
         return links
 
+    # 5. html parsing
     try:
         soup = BeautifulSoup(content, "lxml")
     except Exception:
         soup = BeautifulSoup(content, "html.parser")
-    base_url = resp.raw_response.url
+
+    # 6. collect unique pages 
+    unique_pages.add(defragmented_url)
     
-    # --- Collect all href links first ---
+    # 7. collect all href links first 
     for tag in soup.find_all("a", href=True):
         try:
             href = tag["href"].strip()
@@ -89,6 +96,7 @@ def extract_next_links(url, resp):
         except ValueError:
             continue
 
+    # 8. skip login pages (title check)
     final_url = base_url.lower()
     title_tag = soup.find("title")
     title_text = title_tag.get_text().lower() if title_tag else ""
@@ -98,20 +106,18 @@ def extract_next_links(url, resp):
     if any(word in title_text for word in ["login", "sign in", "access denied", "authentication required", "forbidden"]):
         return []
 
+    # 9. robots meta handling
     robots_meta = soup.find("meta", attrs={"name": "robots"})
     robots_content = robots_meta.get("content", "").lower() if robots_meta else ""
     if "noindex" in robots_content or "nofollow" in robots_content:
         return links
 
-    # ----- collect unique pages -----
-    page_url, _ = urldefrag(base_url)
-    unique_pages.add(page_url)
-
+    # 10. text processing for report
     text = soup.get_text(separator=" ")
     words = [w.lower() for w in re.findall(r"[a-zA-Z]{2,}", text)]
 
     if len(words) > longest_page[1]:
-        longest_page = (page_url, len(words))
+        longest_page = (defragmented_url, len(words))
 
     for word in words:
         if word not in STOP_WORDS:
