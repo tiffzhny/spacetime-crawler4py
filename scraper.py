@@ -61,7 +61,8 @@ def extract_next_links(url, resp):
     parsed = urlparse(defragmented_url)         # ParsedResult object (gives .scheme, .netloc, etc.)
     host = parsed.netloc.lower()        # domain part of URL
 
-    # 2. subdomain tracking 
+    # 2. subdomain tracking - moved early to track subdomains immediately right after URL is parsed
+    # counts every subdomain that returns a successful 200 response page 
     if re.search(r"(^|\.)(ics|cs|informatics|stat)\.uci\.edu$", host):
         subdomains[host].add(defragmented_url)
     
@@ -112,7 +113,7 @@ def extract_next_links(url, resp):
     # "noindex": do NOT show page in search/indexing or reports 
     # 9. if "noindex" is NOT present, proceed to report
     if "noindex" not in robots_content:
-        # unique_pages should ignore fragmnets AND queries (refer to ed discussion #122)
+        # unique_pages should ignore fragments AND queries (refer to ed discussion #122)
         # assume unique_pages counts pages that respond to status 200 AND have meaningful info
         parsed_unique = parsed._replace(query="", fragment="")
         unique_url = urlunparse(parsed_unique).rstrip('/')
@@ -136,6 +137,10 @@ def extract_next_links(url, resp):
 # ---------------------------
 
 def _save_stats():
+    # Save stats when the program exits via atexit.register() at bottom.
+    # - records: unique pages, longest page, top 50 words 
+    # - (excluding stop words or words < 2 characters), and subdomains 
+
     top_50 = sorted(token_freq.items(), key=lambda x: x[1], reverse=True)[:50]
     sorted_subs = sorted(
         {sub: len(pages) for sub, pages in subdomains.items()}.items()
@@ -174,10 +179,12 @@ def is_valid(url):
         # path-based trap detection
         path_lower = parsed.path.lower()
 
+        # filters out excessive deep paths trap (ex: /a/b/c/d/e/f/g/h/i/j/k)
         path_parts = [p for p in path_lower.split("/") if p]
         if len(path_parts) > 10:
             return False
         
+        # filters out paths where it repeats 3+ times (ex: /a/b/a/b/a/b/)
         path_part_counts = Counter(path_parts)
         if any(count >= 3 for count in path_part_counts.values()):
             return False
@@ -200,6 +207,7 @@ def is_valid(url):
         query_params = parse_qs(parsed.query).keys()
         raw_query = parsed.query.lower()
 
+        # filters out URLs with too many query parameters (ex: ?a=1&b=2&c=3&d=4&e=5&f=6&g=7&h=8&i=9)
         if len(query_params) > 8:
             return False
         
@@ -232,7 +240,7 @@ def is_valid(url):
         if "/pix/" in path_lower:
             return False
 
-        # filter file type
+        # filter file extension type
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
