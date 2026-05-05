@@ -120,7 +120,7 @@ def extract_next_links(url, resp):
         unique_pages.add(unique_url)
 
         text = soup.get_text(separator=" ")
-        words = [w.lower() for w in re.findall(r"[a-zA-Z]{2,}", text)]
+        words = [w.lower() for w in re.findall(r"[a-zA-Z']{2,}", text)]
 
         if len(words) > longest_page[1]:
             longest_page = (defragmented_url, len(words))
