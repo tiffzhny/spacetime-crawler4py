@@ -1,7 +1,7 @@
 import re, json
 from urllib.parse import urlparse, urljoin, urldefrag, parse_qs
 from bs4 import BeautifulSoup
-from collections import defaultdict
+from collections import defaultdict, Counter
 import atexit
 
 unique_pages   = set()
@@ -163,13 +163,14 @@ def is_valid(url):
         path_lower = parsed.path.lower()
 
         path_parts = [p for p in path_lower.split("/") if p]
-        if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
+        if len(path_parts) > 10:
+            return False
+        
+        path_part_counts = Counter(path_parts)
+        if any(count >= 3 for count in path_part_counts.values()):
             return False
         
         if re.search(r"/events/", path_lower):
-            return False
-        
-        if re.search(r"(genealogy|family|marriage|birth|death)", path_lower):
             return False
     
         # Block month calendar paths (but NOT "may" as a common word)
@@ -206,8 +207,7 @@ def is_valid(url):
         # avoid specific site traps
         if re.search(r"/releases/\d", path_lower):
             return False
-        if re.search(r"(login|noauth|ticket)", path_lower): 
-            return False
+    
         if re.search(r"/page/\d+", path_lower):
             return False
         
