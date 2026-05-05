@@ -1,5 +1,5 @@
 import re, json
-from urllib.parse import urlparse, urljoin, urldefrag
+from urllib.parse import urlparse, urljoin, urldefrag, parse_qs
 from bs4 import BeautifulSoup
 from collections import defaultdict
 import atexit
@@ -159,11 +159,9 @@ def is_valid(url):
         if not allowed:
             return False
 
-        # prep
-        query = parsed.query.lower()
+        # path-based trap detection
         path_lower = parsed.path.lower()
 
-        # path-based trap detection
         path_parts = [p for p in path_lower.split("/") if p]
         if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
             return False
@@ -186,17 +184,23 @@ def is_valid(url):
             return False
 
         # query-based trap detection
-        if len(query) > 200:
-            return False
-        
-        if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
-            return False
-        
-        if re.search(r"([?&][cmo]=|;[cmo]=)", query):
-            return False
+        query_params = parse_qs(parsed.query).keys()
+        raw_query = parsed.query.lower()
 
-        # Check infinite traps
-        if re.search(r"(skin=|lang=|replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
+        if len(query_params) > 8:
+            return False
+        
+        # removed calendar, date, event, skin, lang, sort, order, filter, share, and page
+        # since it is possible for legitimate pages to have them (rely on above condition)
+        blocked_query_params = {
+            "ical", "outlook-ical", "tribe-bar-date", "action", "replytocom", "eventDisplay",
+            "rev", "diff", "precision", "version"
+        }
+
+        if blocked_query_params & query_params:
+            return False
+        
+        if re.search(r"([?&][cmo]=|;[cmo]=)", raw_query):
             return False
         
         # avoid specific site traps
@@ -210,7 +214,7 @@ def is_valid(url):
         if re.search(r"doku\.php/group", path_lower):
             return False
 
-        if "doku.php" in path_lower and parsed.query:
+        if "doku.php" in path_lower and raw_query:
             return False
 
         if "/pix/" in path_lower:
