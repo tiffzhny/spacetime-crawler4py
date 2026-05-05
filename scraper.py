@@ -54,6 +54,14 @@ def extract_next_links(url, resp):
     if resp.status != 200 or resp.raw_response is None:
         return links
     
+    base_url = resp.raw_response.url
+    page_url, _ = urldefrag(base_url)
+    parsed = urlparse(page_url)
+    host = parsed.netloc.lower()
+
+    if re.search(r"(^|\.)(ics|cs|informatics|stat)\.uci\.edu$", host):
+        subdomains[host].add(page_url)
+    
     # Checks if a page's content type is text/html, skips pdf, image to improve efficiency
     content_type = resp.raw_response.headers.get("Content-Type", "").lower()
     if "text/html" not in content_type:
@@ -109,13 +117,6 @@ def extract_next_links(url, resp):
         if word not in STOP_WORDS:
             token_freq[word] += 1
 
-    parsed = urlparse(page_url)
-    host = parsed.netloc.lower()
-
-    if re.search(r"(^|\.)(ics|cs|informatics|stat)\.uci\.edu$", host):
-        subdomains[host].add(page_url)
-
-
     return links
 
 # ---------------------------
@@ -143,9 +144,11 @@ def is_valid(url):
     try:
         parsed = urlparse(url)
 
+        # scheme restriction
         if parsed.scheme not in {"http", "https"}:
             return False
 
+        # domain restriction
         host = parsed.netloc.lower()
         allowed = (
             re.search(r"(^|\.)ics\.uci\.edu$", host) or
@@ -156,16 +159,15 @@ def is_valid(url):
         if not allowed:
             return False
 
+        # prep
         query = parsed.query.lower()
         path_lower = parsed.path.lower()
 
-        if len(query) > 200:
+        # path-based trap detection
+        path_parts = [p for p in path_lower.split("/") if p]
+        if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
             return False
         
-        # Check infinite traps
-        if re.search(r"(skin=|lang=|replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
-            return False
-
         if re.search(r"/events/", path_lower):
             return False
         
@@ -177,26 +179,44 @@ def is_valid(url):
         if re.search(months_pattern, path_lower):
             return False
         
+        if re.search(r"(login|noauth|ticket)", path_lower):
+            return False
+
+        if re.search(r"(genealogy|family|marriage|birth|death)", path_lower):
+            return False
+
+        # query-based trap detection
+        if len(query) > 200:
+            return False
+        
+        if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
+            return False
+        
         if re.search(r"([?&][cmo]=|;[cmo]=)", query):
             return False
 
-        if re.search(r"(calendar|date|event|action=|tribe-bar-date)", query):
+        # Check infinite traps
+        if re.search(r"(skin=|lang=|replytocom|share|sort|order|filter|page=|ical|outlook-ical)", query):
             return False
+        
+        # avoid specific site traps
         if re.search(r"/releases/\d", path_lower):
             return False
         if re.search(r"(login|noauth|ticket)", path_lower): 
             return False
         if re.search(r"/page/\d+", path_lower):
             return False
-        path_parts = [p for p in path_lower.split("/") if p]
-        if len(path_parts) != len(set(path_parts)) and len(path_parts) > 6:
-            return False
+        
         if re.search(r"doku\.php/group", path_lower):
             return False
+
         if "doku.php" in path_lower and parsed.query:
             return False
+
         if "/pix/" in path_lower:
             return False
+
+        # filter file type
         return not re.match(
             r".*\.(css|js|bmp|gif|jpe?g|ico"
             + r"|png|tiff?|mid|mp2|mp3|mp4"
