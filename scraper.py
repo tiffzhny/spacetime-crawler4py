@@ -1,5 +1,5 @@
 import re, json
-from urllib.parse import urlparse, urljoin, urldefrag, parse_qs
+from urllib.parse import urlparse, urljoin, urldefrag, parse_qs, urlunparse
 from bs4 import BeautifulSoup
 from collections import defaultdict, Counter
 import atexit
@@ -112,7 +112,12 @@ def extract_next_links(url, resp):
     # "noindex": do NOT show page in search/indexing or reports 
     # 9. if "noindex" is NOT present, proceed to report
     if "noindex" not in robots_content:
-        unique_pages.add(defragmented_url)
+        # unique_pages should ignore fragmnets AND queries (refer to ed discussion #122)
+        # assume unique_pages counts pages that respond to status 200 AND have meaningful info
+        parsed_unique = parsed._replace(query="", fragment="")
+        unique_url = urlunparse(parsed_unique).rstrip('/')
+
+        unique_pages.add(unique_url)
 
         text = soup.get_text(separator=" ")
         words = [w.lower() for w in re.findall(r"[a-zA-Z]{2,}", text)]
