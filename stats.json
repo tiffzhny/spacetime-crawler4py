@@ -1,209 +1,209 @@
 {
-  "unique_pages": 9421,
+  "unique_pages": 9168,
   "longest_page": {
     "url": "https://ics.uci.edu/~eppstein/pubs/all.html",
-    "word_count": 34004
+    "word_count": 34006
   },
   "top_50_words": [
     [
       "can",
-      23992
+      23091
     ],
     [
       "ics",
-      21429
+      21347
     ],
     [
       "one",
-      17842
+      17717
     ],
     [
       "data",
-      15670
+      15709
     ],
     [
       "uci",
-      14553
+      14443
     ],
     [
       "time",
-      13578
+      13586
     ],
     [
       "information",
-      13357
+      13376
     ],
     [
       "research",
-      13207
+      13212
     ],
     [
       "computer",
-      13046
+      13032
     ],
     [
       "software",
-      13000
+      12992
     ],
     [
       "project",
-      12653
+      12596
     ],
     [
       "use",
-      11194
+      11190
     ],
     [
       "course",
-      10940
+      10873
     ],
     [
       "program",
-      10651
-    ],
-    [
-      "students",
-      10113
+      10411
     ],
     [
       "using",
-      9985
+      10184
+    ],
+    [
+      "students",
+      9898
     ],
     [
       "class",
-      9862
-    ],
-    [
-      "systems",
-      9723
+      9830
     ],
     [
       "learning",
-      9701
+      9813
+    ],
+    [
+      "systems",
+      9757
     ],
     [
       "first",
-      9648
+      9642
     ],
     [
       "work",
-      9543
+      9539
     ],
     [
       "science",
-      9350
+      9373
     ],
     [
       "university",
-      9295
+      9301
     ],
     [
       "new",
-      9204
+      9260
     ],
     [
       "also",
-      9010
+      9015
     ],
     [
       "us",
-      8953
+      8991
     ],
     [
       "code",
-      8814
-    ],
-    [
-      "file",
-      8771
+      8808
     ],
     [
       "irvine",
-      8763
+      8758
+    ],
+    [
+      "file",
+      8724
     ],
     [
       "two",
-      8635
+      8625
     ],
     [
       "system",
-      7853
+      7712
     ],
     [
       "number",
-      7417
+      7392
     ],
     [
       "edu",
-      7380
-    ],
-    [
-      "ll",
-      7211
-    ],
-    [
-      "problem",
-      7208
+      7367
     ],
     [
       "set",
-      7207
+      7205
+    ],
+    [
+      "problem",
+      7190
     ],
     [
       "based",
-      6969
+      6972
     ],
     [
       "eppstein",
-      6886
+      6884
     ],
     [
       "like",
-      6821
+      6827
     ],
     [
       "algorithms",
-      6816
-    ],
-    [
-      "re",
-      6723
-    ],
-    [
-      "computing",
-      6685
-    ],
-    [
-      "need",
-      6572
-    ],
-    [
-      "search",
-      6537
+      6814
     ],
     [
       "see",
-      6523
+      6700
     ],
     [
-      "pdf",
-      6411
+      "computing",
+      6672
+    ],
+    [
+      "need",
+      6571
+    ],
+    [
+      "search",
+      6547
     ],
     [
       "list",
-      6395
+      6490
     ],
     [
-      "student",
-      6386
+      "pdf",
+      6409
     ],
     [
       "graph",
-      6367
+      6357
+    ],
+    [
+      "student",
+      6174
     ],
     [
       "design",
-      6148
+      6139
+    ],
+    [
+      "paper",
+      6053
+    ],
+    [
+      "th",
+      5990
     ]
   ],
   "subdomains": [
@@ -213,15 +213,15 @@
     ],
     [
       "acoi.ics.uci.edu",
-      110
+      111
     ],
     [
       "archive-beta.ics.uci.edu",
-      7
+      9
     ],
     [
       "archive.ics.uci.edu",
-      207
+      214
     ],
     [
       "asterix.ics.uci.edu",
@@ -245,11 +245,11 @@
     ],
     [
       "cloudberry.ics.uci.edu",
-      4
+      5
     ],
     [
       "cml.ics.uci.edu",
-      150
+      156
     ],
     [
       "code.ics.uci.edu",
@@ -257,7 +257,7 @@
     ],
     [
       "computableplant.ics.uci.edu",
-      88
+      101
     ],
     [
       "containers.ics.uci.edu",
@@ -269,7 +269,7 @@
     ],
     [
       "cradl.ics.uci.edu",
-      15
+      17
     ],
     [
       "create.ics.uci.edu",
@@ -281,7 +281,7 @@
     ],
     [
       "dale-cooper-v0.ics.uci.edu",
-      1
+      2
     ],
     [
       "dgillen.ics.uci.edu",
@@ -297,7 +297,7 @@
     ],
     [
       "dynamo.ics.uci.edu",
-      31
+      33
     ],
     [
       "edgelab.ics.uci.edu",
@@ -305,15 +305,23 @@
     ],
     [
       "emj.ics.uci.edu",
-      33
+      35
+    ],
+    [
+      "evoke.ics.uci.edu",
+      1
     ],
     [
       "flamingo.ics.uci.edu",
-      16
+      26
     ],
     [
       "fr.ics.uci.edu",
       3
+    ],
+    [
+      "gitlab.ics.uci.edu",
+      1
     ],
     [
       "gradinfo.ics.uci.edu",
@@ -321,7 +329,7 @@
     ],
     [
       "grape.ics.uci.edu",
-      304
+      639
     ],
     [
       "graphics.ics.uci.edu",
@@ -333,15 +341,23 @@
     ],
     [
       "hobbes.ics.uci.edu",
-      10
+      11
     ],
     [
       "hpi.ics.uci.edu",
       5
     ],
     [
+      "hub.ics.uci.edu",
+      3
+    ],
+    [
       "i-sensorium.ics.uci.edu",
       5
+    ],
+    [
+      "iasl.ics.uci.edu",
+      1
     ],
     [
       "icde2023.ics.uci.edu",
@@ -349,7 +365,7 @@
     ],
     [
       "ics.uci.edu",
-      6309
+      7113
     ],
     [
       "industryshowcase.ics.uci.edu",
@@ -361,7 +377,7 @@
     ],
     [
       "intranet.ics.uci.edu",
-      1
+      13
     ],
     [
       "ipubmed.ics.uci.edu",
@@ -369,7 +385,7 @@
     ],
     [
       "isg.ics.uci.edu",
-      177
+      178
     ],
     [
       "isi-buds.ics.uci.edu",
@@ -380,12 +396,16 @@
       40
     ],
     [
+      "julia-hub.ics.uci.edu",
+      1
+    ],
+    [
       "luci.ics.uci.edu",
       4
     ],
     [
       "mailman.ics.uci.edu",
-      38
+      40
     ],
     [
       "malek.ics.uci.edu",
@@ -412,12 +432,12 @@
       8
     ],
     [
-      "myip.ics.uci.edu",
-      1
-    ],
-    [
       "nalini.ics.uci.edu",
       8
+    ],
+    [
+      "netreg.ics.uci.edu",
+      1
     ],
     [
       "ngs.ics.uci.edu",
@@ -445,7 +465,7 @@
     ],
     [
       "seal.ics.uci.edu",
-      46
+      50
     ],
     [
       "sherlock.ics.uci.edu",
@@ -464,6 +484,10 @@
       1
     ],
     [
+      "staging-hub.ics.uci.edu",
+      1
+    ],
+    [
       "stairs.ics.uci.edu",
       3
     ],
@@ -477,7 +501,7 @@
     ],
     [
       "support.ics.uci.edu",
-      2
+      5
     ],
     [
       "tastier.ics.uci.edu",
@@ -501,11 +525,11 @@
     ],
     [
       "wiki.ics.uci.edu",
-      110
+      220
     ],
     [
       "www-db.ics.uci.edu",
-      23
+      25
     ],
     [
       "xtune.ics.uci.edu",
