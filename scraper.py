@@ -59,7 +59,8 @@ def extract_next_links(url, resp):
 
     # 2. subdomain tracking - moved early to track subdomains immediately right after URL is parsed
     # counts every subdomain that returns a successful 200 response page 
-    if re.search(r"(^|\.)(ics|cs|informatics|stat)\.uci\.edu$", host):
+    valid_domains = ["ics.uci.edu", "cs.uci.edu", "informatics.uci.edu", "stat.uci.edu"]
+    if any(host == vd or host.endswith("." + vd) for vd in valid_domains):
         subdomains[host].add(defragmented_url)
     
     # 3. check if a page's content type is text/html. skips pdf, image to improve efficiency
@@ -116,14 +117,17 @@ def extract_next_links(url, resp):
 
         unique_pages.add(unique_url)
 
-        text = soup.get_text(separator=" ")
-        words = [w.lower() for w in re.findall(r"[a-zA-Z']{2,}", text)]
+        body = soup.body or soup
+        text = body.get_text(separator=" ")
+        words = re.findall(r"[a-zA-Z']{2,}", text.lower())
 
         if len(words) > longest_page[1]:
             longest_page = (defragmented_url, len(words))
 
+        garbage = {"msonormal", "th", "st", "nd", "rd"}
+
         for word in words:
-            if word not in STOP_WORDS:
+            if word not in STOP_WORDS and word not in garbage:
                 token_freq[word] += 1
 
     return links
@@ -186,7 +190,7 @@ def is_valid(url):
         if any(count >= 3 for count in path_part_counts.values()):
             return False
         
-        if re.search(r"/events/|/event/", path_lower):
+        if re.search(r"/(events|calendar)(/|$)", path_lower):
             return False
     
         # Block month calendar paths (but NOT "may" as a common word)
@@ -195,9 +199,6 @@ def is_valid(url):
             return False
         
         if re.search(r"(login|noauth|ticket)", path_lower):
-            return False
-
-        if re.search(r"(genealogy|family|marriage|birth|death)", path_lower):
             return False
 
         # query-based trap detection
