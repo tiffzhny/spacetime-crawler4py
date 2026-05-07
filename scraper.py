@@ -28,9 +28,9 @@ STOP_WORDS = {
     "we've","were","weren't","what","what's","when","when's","where","where's",
     "which","while","who","who's","whom","why","why's","will","with","won't",
     "would","wouldn't","you","you'd","you'll","you're","you've","your","yours",
-    "yourself","yourselves", 
+    "yourself","yourselves",
     
-    # months and days to avoid crawling calendar pages
+    # months and days excluded
     "january", "february", "march", "april", "may", "june", 
     "july", "august", "september", "october", "november", "december", "jan", "feb", 
     "mar", "apr", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "monday", "tuesday", 
@@ -43,11 +43,13 @@ def scraper(url, resp):
     # _save_stats()
     return valid
 
-#---------------------
-# Linked extraction 
-#---------------------
+# ------------------------------------------------------------------------------
+# Link extraction
+# ------------------------------------------------------------------------------
 
 def extract_next_links(url, resp):
+    # Processes a crawled page and tracks subdomains, extracts links
+    # and update stats (unique pages, longest page, word frequencies)
     global longest_page, unique_pages, token_freq, subdomains
     links = []
 
@@ -132,9 +134,9 @@ def extract_next_links(url, resp):
 
     return links
 
-# ---------------------------
+# ------------------------------------------------------------------------------
 # Stats and URL filtering
-# ---------------------------
+# ------------------------------------------------------------------------------
 
 def _save_stats():
     # Save stats when the program exits via atexit.register() at bottom.
@@ -158,6 +160,7 @@ def is_valid(url):
     # Decide whether to crawl this url or not. 
     # If you decide to crawl it, return True; otherwise return False.
     # There are already some conditions that return False.
+    # Enforces: domain restrictions, trap detection, and file type filtering
     try:
         parsed = urlparse(url)
 
