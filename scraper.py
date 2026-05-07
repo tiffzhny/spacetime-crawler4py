@@ -28,13 +28,7 @@ STOP_WORDS = {
     "we've","were","weren't","what","what's","when","when's","where","where's",
     "which","while","who","who's","whom","why","why's","will","with","won't",
     "would","wouldn't","you","you'd","you'll","you're","you've","your","yours",
-    "yourself","yourselves",
-    
-    # months and days excluded
-    "january", "february", "march", "april", "may", "june", 
-    "july", "august", "september", "october", "november", "december", "jan", "feb", 
-    "mar", "apr", "jun", "jul", "aug", "sep", "oct", "nov", "dec", "monday", "tuesday", 
-    "wednesday", "thursday", "friday", "saturday", "sunday"
+    "yourself","yourselves"
 }
 
 def scraper(url, resp):
@@ -192,7 +186,7 @@ def is_valid(url):
         if any(count >= 3 for count in path_part_counts.values()):
             return False
         
-        if re.search(r"/events/", path_lower):
+        if re.search(r"/events/|/event/", path_lower):
             return False
     
         # Block month calendar paths (but NOT "may" as a common word)
@@ -214,11 +208,9 @@ def is_valid(url):
         if len(query_params) > 8:
             return False
         
-        # removed calendar, date, event, skin, lang, sort, order, filter, share, and page
-        # since it is possible for legitimate pages to have them (rely on above condition)
         blocked_query_params = {
             "ical", "outlook-ical", "tribe-bar-date", "action", "replytocom", "eventDisplay",
-            "rev", "diff", "precision", "version"
+            "rev", "diff", "precision", "version", "calendar", "cal", "date"
         }
 
         if blocked_query_params & query_params:
