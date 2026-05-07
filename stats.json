@@ -1,209 +1,209 @@
 {
-  "unique_pages": 9168,
+  "unique_pages": 10369,
   "longest_page": {
     "url": "https://ics.uci.edu/~eppstein/pubs/all.html",
-    "word_count": 34006
+    "word_count": 34003
   },
   "top_50_words": [
     [
+      "married",
+      29621
+    ],
+    [
       "can",
-      23091
+      23410
+    ],
+    [
+      "may",
+      22432
     ],
     [
       "ics",
-      21347
+      21065
     ],
     [
       "one",
-      17717
+      18142
     ],
     [
       "data",
-      15709
+      15758
     ],
     [
-      "uci",
-      14443
+      "jan",
+      15706
     ],
     [
-      "time",
-      13586
+      "dec",
+      15314
+    ],
+    [
+      "ny",
+      15238
+    ],
+    [
+      "mar",
+      15234
+    ],
+    [
+      "jun",
+      14752
+    ],
+    [
+      "oct",
+      14082
     ],
     [
       "information",
-      13376
+      14039
     ],
     [
       "research",
-      13212
+      13976
+    ],
+    [
+      "sep",
+      13931
+    ],
+    [
+      "time",
+      13888
+    ],
+    [
+      "uci",
+      13829
+    ],
+    [
+      "feb",
+      13811
+    ],
+    [
+      "apr",
+      13742
+    ],
+    [
+      "nov",
+      13579
+    ],
+    [
+      "aug",
+      13486
+    ],
+    [
+      "jul",
+      13451
     ],
     [
       "computer",
-      13032
+      12948
     ],
     [
       "software",
-      12992
+      12828
     ],
     [
       "project",
-      12596
+      12206
     ],
     [
       "use",
-      11190
+      11336
     ],
     [
       "course",
-      10873
-    ],
-    [
-      "program",
-      10411
-    ],
-    [
-      "using",
-      10184
+      10771
     ],
     [
       "students",
-      9898
+      10737
     ],
     [
-      "class",
-      9830
+      "program",
+      10355
     ],
     [
-      "learning",
-      9813
-    ],
-    [
-      "systems",
-      9757
-    ],
-    [
-      "first",
-      9642
-    ],
-    [
-      "work",
-      9539
-    ],
-    [
-      "science",
-      9373
-    ],
-    [
-      "university",
-      9301
+      "using",
+      10315
     ],
     [
       "new",
-      9260
+      9870
+    ],
+    [
+      "first",
+      9824
+    ],
+    [
+      "class",
+      9824
+    ],
+    [
+      "work",
+      9553
+    ],
+    [
+      "systems",
+      9448
+    ],
+    [
+      "university",
+      9344
+    ],
+    [
+      "science",
+      9319
     ],
     [
       "also",
-      9015
+      9305
+    ],
+    [
+      "learning",
+      9175
     ],
     [
       "us",
-      8991
+      8997
+    ],
+    [
+      "family",
+      8860
     ],
     [
       "code",
-      8808
-    ],
-    [
-      "irvine",
-      8758
-    ],
-    [
-      "file",
-      8724
+      8777
     ],
     [
       "two",
-      8625
+      8765
     ],
     [
-      "system",
-      7712
+      "file",
+      8742
     ],
     [
-      "number",
-      7392
+      "irvine",
+      8193
     ],
     [
       "edu",
-      7367
+      8132
     ],
     [
-      "set",
-      7205
+      "system",
+      7772
     ],
     [
-      "problem",
-      7190
-    ],
-    [
-      "based",
-      6972
-    ],
-    [
-      "eppstein",
-      6884
-    ],
-    [
-      "like",
-      6827
-    ],
-    [
-      "algorithms",
-      6814
-    ],
-    [
-      "see",
-      6700
-    ],
-    [
-      "computing",
-      6672
-    ],
-    [
-      "need",
-      6571
+      "number",
+      7464
     ],
     [
       "search",
-      6547
+      7302
     ],
     [
-      "list",
-      6490
-    ],
-    [
-      "pdf",
-      6409
-    ],
-    [
-      "graph",
-      6357
-    ],
-    [
-      "student",
-      6174
-    ],
-    [
-      "design",
-      6139
-    ],
-    [
-      "paper",
-      6053
-    ],
-    [
-      "th",
-      5990
+      "computing",
+      7250
     ]
   ],
   "subdomains": [
@@ -293,7 +293,7 @@
     ],
     [
       "duttgroup.ics.uci.edu",
-      111
+      113
     ],
     [
       "dynamo.ics.uci.edu",
@@ -365,7 +365,7 @@
     ],
     [
       "ics.uci.edu",
-      7113
+      7941
     ],
     [
       "industryshowcase.ics.uci.edu",
@@ -441,7 +441,7 @@
     ],
     [
       "ngs.ics.uci.edu",
-      715
+      1123
     ],
     [
       "oai.ics.uci.edu",
@@ -521,7 +521,7 @@
     ],
     [
       "wics.ics.uci.edu",
-      221
+      199
     ],
     [
       "wiki.ics.uci.edu",
