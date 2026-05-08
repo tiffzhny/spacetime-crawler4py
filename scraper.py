@@ -201,6 +201,9 @@ def is_valid(url):
         if re.search(r"(login|noauth|ticket)", path_lower):
             return False
 
+        if re.search(r"(genealogy|family|marriage|birth|death)", path_lower):
+            return False
+
         # query-based trap detection
         query_params = parse_qs(parsed.query).keys()
         raw_query = parsed.query.lower()
